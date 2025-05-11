@@ -1,0 +1,55 @@
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Swap, backup, and undo files
+*.swp
+*.swo
+*.swn
+*.bak
+*.tmp
+*.undo
+
+# Neovim plugin manager and build artifacts
+site/
+pack/
+plugged/
+node_modules/
+
+# Lazy.nvim, Packer, and other plugin managers
+lua/lazy-lock.json
+lua/packer_compiled.lua
+lazy-lock.json
+# LSP, Treesitter, and other caches
+.cache/
+spell/
+
+# Personal/secret files
+secrets.*
+.env
+.env.*
+
+# Ignore logs
+*.log
+
+# Ignore compiled files
+*.o
+*.out
+*.class
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore local session files
+Session.vim
+
+# Ignore backup files
+*~
+
+# Ignore any custom local config
+local.vim
+local.lua
+
+# Ignore VSCode settings if present
+.vscode/ 
