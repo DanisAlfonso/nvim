@@ -44,6 +44,16 @@ vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right win
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
+
+-- Select all text
+vim.keymap.set("n", "<leader>aa", "ggVG", { desc = "Select all", noremap = true, silent = true })
+
+-- Delete all text
+vim.keymap.set("n", "<leader>dd", "ggdG", { desc = "Delete all", noremap = true, silent = true })
+
+-- Delete all without affecting clipboard
+vim.keymap.set("n", "<leader>dD", 'gg"_dG', { desc = "Delete all (no clipboard)", noremap = true, silent = true })
+
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
 	group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
