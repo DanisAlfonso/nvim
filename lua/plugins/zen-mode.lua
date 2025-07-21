@@ -24,7 +24,7 @@ return {
         },
         twilight = { enabled = true },
         gitsigns = { enabled = false },
-        tmux = { enabled = false },
+        tmux = { enabled = true},
         wezterm = {
           enabled = true,
           font = "+4",

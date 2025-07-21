@@ -1,7 +1,6 @@
 vim.g.mapleader = " " -- Set leader key to spaces
 vim.g.maplocalleader = " " -- Set local leader key to spaces
 vim.g.have_nerd_font = true -- Set to true if you have nerd font installed
-
 vim.opt.number = true -- Show line numbers
 vim.opt.mouse = "a" -- Enable mouse support
 vim.opt.showmode = false -- Disable showing mode in command line

@@ -1,0 +1,162 @@
+╔═════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                                             ║
+║                                      N E O V I M   C H E A T   S H E E T                                      ║
+║                                                                                                             ║
+╚═════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+
+Leader Key: [Space]
+
+═══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+                                        --=[ Essential Vim Commands ]=--
+═══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+  MOVEMENT
+  -------------------------------------------------------------------------------------------------------------
+  h, j, k, l             - Left, Down, Up, Right
+  w                      - Move to the beginning of the next word
+  b                      - Move to the beginning of the previous word
+  e                      - Move to the end of the current word
+  gg                     - Go to the first line of the file
+  G                      - Go to the last line of the file
+  0                      - Move to the beginning of the line
+  ^                      - Move to the first non-whitespace character of the line
+  $                      - Move to the end of the line
+  
+  EDITING
+  -------------------------------------------------------------------------------------------------------------
+  i                      - Enter Insert mode at the cursor
+  a                      - Enter Insert mode after the cursor
+  o                      - Open a new line below and enter Insert mode
+  O                      - Open a new line above and enter Insert mode
+  x                      - Delete the character under the cursor
+  dd                     - Delete the current line
+  yy                     - Yank (copy) the current line
+  p                      - Paste after the cursor
+  P                      - Paste before the cursor
+  u                      - Undo the last change
+  <C-r>                  - Redo the last change
+
+  VISUAL MODE
+  -------------------------------------------------------------------------------------------------------------
+  v                      - Enter Visual mode (character-wise)
+  V                      - Enter Visual mode (line-wise)
+  <C-v>                  - Enter Visual mode (block-wise)
+
+  SEARCHING
+  -------------------------------------------------------------------------------------------------------------
+  /pattern               - Search forward for "pattern"
+  ?pattern               - Search backward for "pattern"
+  n                      - Repeat the last search in the same direction
+  N                      - Repeat the last search in the opposite direction
+
+  COMMAND MODE
+  -------------------------------------------------------------------------------------------------------------
+  :w                     - Write (save) the file
+  :q                     - Quit the current window
+  :wq                    - Write and quit
+  :q!                    - Quit without saving changes
+
+═══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+                                            --=[ General ]=--
+═══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+  NORMAL MODE
+  -------------------------------------------------------------------------------------------------------------
+  <leader>q              - Open diagnostic [Q]uickfix list
+  <leader>e              - Open Oil file explorer
+  <leader>aa             - Select all text
+  <leader>sa             - Select all contents
+  <leader>dd             - Delete all text
+  <leader>dD             - Delete all text (without affecting clipboard)
+  <leader>da             - Delete all contents
+  <leader>?              - Show Buffer Local Keymaps (which-key)
+
+  <C-h>                  - Move focus to the left window
+  <C-l>                  - Move focus to the right window
+  <C-j>                  - Move focus to the lower window
+  <C-k>                  - Move focus to the upper window
+
+  Esc                    - Clear search highlight
+
+═══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+                                           --=[ Telescope ]=--
+═══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+  Prefix: <leader>s...
+  -------------------------------------------------------------------------------------------------------------
+  <leader>sh             - [S]earch [H]elp
+  <leader>sk             - [S]earch [K]eymaps
+  <leader>sf             - [S]earch [F]iles
+  <leader>ss             - [S]earch [S]elect Telescope
+  <leader>sw             - [S]earch current [W]ord
+  <leader>sg             - [S]earch by [G]rep
+  <leader>sd             - [S]earch [D]iagnostics
+  <leader>sr             - [S]earch [R]esume
+  <leader>s.             - [S]earch Recent Files
+  <leader>sn             - [S]earch [N]eovim files
+  <leader>/              - Fuzzily search in current buffer
+  <leader>s/             - [S]earch [/] in Open Files
+  <leader><leader>        - Find existing buffers
+
+═══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+                                            --=[ Copilot ]=--
+═══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+  INSERT MODE
+  -------------------------------------------------------------------------------------------------------------
+  <C-l>                  - Accept suggestion
+  <C-j>                  - Cycle to next suggestion
+  <C-k>                  - Cycle to previous suggestion
+  <C-h>                  - Dismiss suggestion
+
+═══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+                                             --=[ Neorg ]=--
+═══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+  NORMAL MODE (in .norg files)
+  Prefix: <leader>n...
+  -------------------------------------------------------------------------------------------------------------
+  <leader>nn             - Create a new note
+  <leader>nf             - Find a note
+  <leader>ni             - Open the index
+
+═══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+                                           --=[ Treesitter ]=--
+═══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+  TEXTOBJECTS (SELECT)
+  -------------------------------------------------------------------------------------------------------------
+  af                     - Around function
+  if                     - Inside function
+  ac                     - Around class
+  ic                     - Inside class
+
+  TEXTOBJECTS (MOVE)
+  -------------------------------------------------------------------------------------------------------------
+  ]f                     - Go to next function start
+  ]F                     - Go to next function end
+  [f                     - Go to previous function start
+  [F                     - Go to previous function end
+  ]c                     - Go to next class start
+  ]C                     - Go to next class end
+  [c                     - Go to previous class start
+  [C                     - Go to previous class end
+
+  INCREMENTAL SELECTION
+  -------------------------------------------------------------------------------------------------------------
+  <C-space>              - Start or increment selection
+  <bs>                   - Decrement selection
+
+═══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+                                           --=[ Which-Key ]=--
+═══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+  These are prefixes that will trigger the which-key popup to show available commands.
+  -------------------------------------------------------------------------------------------------------------
+  <leader>c              - [C]ode related commands
+  <leader>d              - [D]ocument related commands
+  <leader>r              - [R]ename related commands
+  <leader>s              - [S]earch related commands (Telescope)
+  <leader>w              - [W]orkspace related commands
+  <leader>t              - [T]oggle commands
+  <leader>h              - Git [H]unk commands
