@@ -61,7 +61,7 @@ return {
       { "<leader>s_", hidden = true },
       { "<leader>w", group = "[W]orkspace" },
       { "<leader>w_", hidden = true },
-      { "<leader>t", group = "[T]oggle" },
+      { "<leader>t", group = "[T]erminal" },
       { "<leader>t_", hidden = true },
       { "<leader>h", group = "Git [H]unk" },
       { "<leader>h_", hidden = true },

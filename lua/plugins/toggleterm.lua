@@ -38,7 +38,40 @@ return {
 
     vim.keymap.set("n", "<leader>g", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", { noremap = true, silent = true, desc = "Toggle lazygit" })
 
-    -- Toggle terminal
-    vim.keymap.set("n", "<leader>t", "<cmd>ToggleTerm<CR>", { noremap = true, silent = true, desc = "Toggle terminal" })
+    local fullscreen_terminal = Terminal:new({
+      hidden = true,
+      direction = "float",
+      float_opts = {
+        border = "curved",
+        width = function()
+          return vim.o.columns - 2
+        end,
+        height = function()
+          return vim.o.lines - 2
+        end,
+      },
+    })
+
+    function _FULLSCREEN_TOGGLE()
+      fullscreen_terminal:toggle()
+    end
+
+    vim.keymap.set("n", "<leader>tf", "<cmd>lua _FULLSCREEN_TOGGLE()<CR>", { noremap = true, silent = true, desc = "Toggle fullscreen terminal" })
+
+    
+
+    function _G.toggle_terminal_with_count()
+      local count = vim.v.count
+      if count == 0 then
+        vim.cmd("ToggleTerm")
+      else
+        vim.cmd(count .. "ToggleTerm")
+      end
+    end
+
+    -- we will use which-key to discover these mappings
+    vim.keymap.set("n", "<leader>tt", "<cmd>lua _G.toggle_terminal_with_count()<CR>", { noremap = true, silent = true, desc = "Toggle terminal" })
+    vim.keymap.set("n", "<leader>ts", "<cmd>TermSelect<CR>", { noremap = true, silent = true, desc = "Select terminal" })
+    vim.keymap.set("n", "<leader>tr", "<cmd>ToggleTermSetName<CR>", { noremap = true, silent = true, desc = "Rename terminal" })
   end,
 }
