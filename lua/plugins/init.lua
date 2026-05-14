@@ -1,0 +1,8 @@
+-- Auto-load all plugin configuration files in this directory
+local plugins_dir = vim.fs.joinpath(vim.fn.stdpath 'config', 'lua', 'plugins')
+for file_name, type in vim.fs.dir(plugins_dir) do
+  if type == 'file' and file_name:match '%.lua$' and file_name ~= 'init.lua' then
+    local module = file_name:gsub('%.lua$', '')
+    require('plugins.' .. module)
+  end
+end
