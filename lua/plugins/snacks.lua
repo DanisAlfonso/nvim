@@ -1,6 +1,7 @@
 -- snacks.nvim: dashboard and animations
 vim.pack.add { 'https://github.com/folke/snacks.nvim' }
 require('snacks').setup {
+  explorer = {},
   dashboard = {
     enabled = true,
     preset = {
@@ -54,6 +55,7 @@ require('snacks').setup {
 }
 
 -- Keymaps
+vim.keymap.set('n', '<leader>e', function() Snacks.explorer() end, { desc = '[E]xplorer (snacks)' })
 vim.keymap.set('n', '<leader>d', function() Snacks.dashboard() end, { desc = '[D]ashboard' })
 vim.keymap.set('n', '<leader>gg', function() Snacks.lazygit() end, { desc = '[G]it [G]ui (lazygit)' })
 vim.keymap.set('n', '<leader>gl', function() Snacks.lazygit.log() end, { desc = '[G]it [L]og (lazygit)' })

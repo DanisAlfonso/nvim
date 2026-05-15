@@ -39,7 +39,8 @@ wk.setup {
     -- Zen mode
     { '<leader>z', desc = 'Zen mode', icon = ' ' },
     -- Oil / Explorer
-    { '<leader>e', desc = 'Explorer (oil)', icon = ' ' },
+    { '<leader>o', desc = 'Oil explorer', icon = ' ' },
     { '-', desc = 'Open parent (oil)', icon = ' ' },
+    { '<leader>e', desc = 'Explorer (snacks)', icon = ' ' },
   },
 }
