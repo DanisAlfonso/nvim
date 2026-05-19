@@ -1,37 +1,47 @@
--- lualine.nvim: statusline
-vim.pack.add { 'https://github.com/nvim-lualine/lualine.nvim' }
+vim.pack.add({
+    'https://github.com/nvim-tree/nvim-web-devicons',
+    'https://github.com/nvim-lualine/lualine.nvim',
+})
+
+-- Beautiful lualine for TokyoNight Night (transparent)
+-- Cargamos el theme de TokyoNight y hacemos transparente la sección 'c'
+-- (la del medio, donde va el filename)
+local theme = require('lualine.themes.tokyonight')
+for _, mode in pairs(theme) do
+    if mode.c then
+        mode.c.bg = 'NONE'
+    end
+end
+
 require('lualine').setup {
-  options = {
-    icons_enabled = vim.g.have_nerd_font,
-    theme = 'auto', -- auto-matches your rose-pine colorscheme
-    component_separators = { left = '', right = '' },
-    section_separators = { left = '', right = '' },
-    disabled_filetypes = {
-      statusline = {},
-      winbar = {},
+    options = {
+        theme = theme,
+        component_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
+        disabled_filetypes = { 'snacks_dashboard', 'snacks_terminal', 'neo-tree' },
+        always_divide_middle = true,
+        globalstatus = true,
     },
-    ignore_focus = {},
-    always_divide_middle = true,
-    globalstatus = false,
-  },
-  sections = {
-    lualine_a = { 'mode' },
-    lualine_b = { 'branch', 'diff', 'diagnostics' },
-    lualine_c = { 'filename' },
-    lualine_x = { 'encoding', 'fileformat', 'filetype' },
-    lualine_y = { 'progress' },
-    lualine_z = { 'location' },
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = { 'filename' },
-    lualine_x = { 'location' },
-    lualine_y = {},
-    lualine_z = {},
-  },
-  tabline = {},
-  winbar = {},
-  inactive_winbar = {},
-  extensions = {},
+    sections = {
+        lualine_a = {
+            { 'mode', icon = '󰘳', separator = { left = '', right = '' }, right_padding = 2 },
+        },
+        lualine_b = {
+            { 'branch', icon = '', color = { fg = '#7aa2f7', gui = 'bold' } },
+        },
+        lualine_c = {
+            { 'filename', path = 1, symbols = { modified = ' ●', readonly = ' ', unnamed = ' ' } },
+        },
+        lualine_x = {
+            { 'diagnostics', sources = { 'nvim_diagnostic' }, symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' } },
+            { 'filetype', icon_only = true },
+            { 'datetime', style = '%H:%M', icon = '' },
+        },
+        lualine_y = {
+            { 'progress', separator = { left = '', right = '' } },
+            { 'location', separator = { left = '' } },
+        },
+        lualine_z = {},
+    },
+    extensions = { 'fugitive', 'quickfix', 'lazy' },
 }

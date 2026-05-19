@@ -1,7 +1,9 @@
 -- snacks.nvim: dashboard and animations
 vim.pack.add { 'https://github.com/folke/snacks.nvim' }
 require('snacks').setup {
-  explorer = {},
+  explorer = {
+    replace_netrw = true,
+  },
   dashboard = {
     enabled = true,
     preset = {
@@ -48,6 +50,54 @@ require('snacks').setup {
       disabled = 'yellow',
     },
   },
+  styles = {
+    dashboard = {
+      wo = {
+        fillchars = 'eob: ',
+      },
+    },
+    terminal_float = {
+      position = 'float',
+      border = 'rounded',
+      height = 0.9,
+      width = 0.9,
+      bo = {
+        filetype = 'snacks_terminal',
+      },
+      wo = {},
+      stack = true,
+      keys = {
+        q = 'hide',
+        gf = function(self)
+          local f = vim.fn.findfile(vim.fn.expand('<cfile>'), '**')
+          if f == '' then
+            Snacks.notify.warn('No file under cursor')
+          else
+            self:hide()
+            vim.schedule(function()
+              vim.cmd('e ' .. f)
+            end)
+          end
+        end,
+        term_normal = {
+          '<esc>',
+          function(self)
+            self.esc_timer = self.esc_timer or (vim.uv or vim.loop).new_timer()
+            if self.esc_timer:is_active() then
+              self.esc_timer:stop()
+              vim.cmd('stopinsert')
+            else
+              self.esc_timer:start(200, 0, function() end)
+              return '<esc>'
+            end
+          end,
+          mode = 't',
+          expr = true,
+          desc = 'Double escape to normal mode',
+        },
+      },
+    },
+  },
   terminal = {
     win = { style = 'terminal' },
   },
@@ -56,14 +106,26 @@ require('snacks').setup {
 
 -- Keymaps
 vim.keymap.set('n', '<leader>e', function() Snacks.explorer() end, { desc = '[E]xplorer (snacks)' })
+vim.keymap.set('n', '-', function() Snacks.explorer() end, { desc = 'Open explorer (snacks)' })
 vim.keymap.set('n', '<leader>d', function() Snacks.dashboard() end, { desc = '[D]ashboard' })
 vim.keymap.set('n', '<leader>gg', function() Snacks.lazygit() end, { desc = '[G]it [G]ui (lazygit)' })
 vim.keymap.set('n', '<leader>gl', function() Snacks.lazygit.log() end, { desc = '[G]it [L]og (lazygit)' })
-vim.keymap.set('n', '<leader>z', function() Snacks.zen() end, { desc = '[Z]en mode' })
+vim.keymap.set('n', '<leader>zz', function() Snacks.zen() end, { desc = '[Z]en mode (code)' })
+vim.keymap.set('n', '<leader>zp', function()
+  Snacks.zen.zen {
+    win = {
+      width = 80,
+      wo = {
+        number = false,
+        relativenumber = false,
+      },
+    },
+  }
+end, { desc = 'Zen mode [p]rose' })
 
 -- Terminal keymaps
 vim.keymap.set('n', '<leader>tt', function() Snacks.terminal.toggle() end, { desc = '[T]oggle [T]erminal' })
-vim.keymap.set('n', '<leader>tf', function() Snacks.terminal.toggle(nil, { cwd = vim.fn.stdpath 'config' }) end, { desc = '[T]erminal [F]loe (nvim dir)' })
+vim.keymap.set('n', '<leader>tf', function() Snacks.terminal.toggle(nil, { win = { style = 'terminal_float' } }) end, { desc = '[T]erminal [F]loat' })
 vim.keymap.set('n', '<leader>tl', function() Snacks.terminal.toggle('lazygit') end, { desc = '[T]erminal [L]azygit' })
 
 -- Toggle keymaps

@@ -159,6 +159,19 @@ do
     group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
     callback = function() vim.hl.on_yank() end,
   })
+
+  -- Prose settings for writing markdown and text files
+  vim.api.nvim_create_autocmd('FileType', {
+    pattern = { 'markdown', 'text', 'tex', 'plaintex' },
+    group = vim.api.nvim_create_augroup('prose-settings', { clear = true }),
+    callback = function()
+      vim.bo.textwidth = 80       -- hard-wrap at column 80
+      vim.wo.wrap = true          -- soft-wrap lines
+      vim.wo.linebreak = true     -- break on word boundaries
+      -- vim.wo.spell = true         -- enable spellcheck
+      -- vim.bo.spelllang = 'en_us'
+    end,
+  })
 end
 
 -- ============================================================
