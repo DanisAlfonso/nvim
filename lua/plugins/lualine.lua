@@ -3,19 +3,14 @@ vim.pack.add({
     'https://github.com/nvim-lualine/lualine.nvim',
 })
 
--- Beautiful lualine for TokyoNight Night (transparent)
--- Cargamos el theme de TokyoNight y hacemos transparente la sección 'c'
--- (la del medio, donde va el filename)
-local theme = require('lualine.themes.tokyonight')
-for _, mode in pairs(theme) do
-    if mode.c then
-        mode.c.bg = 'NONE'
-    end
-end
+-- Load the active theme's lualine config from lua/themes/
+-- Change the active theme in lua/themes/init.lua
+local active_theme = require("themes")
+local lualine_theme = active_theme.lualine_theme or "auto"
 
 require('lualine').setup {
     options = {
-        theme = theme,
+        theme = lualine_theme,
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
         disabled_filetypes = { 'snacks_dashboard', 'snacks_terminal', 'neo-tree' },

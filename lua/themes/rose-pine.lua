@@ -1,0 +1,66 @@
+-- Rosé Pine theme configuration
+-- This file is used by lua/themes/init.lua (change the active theme there)
+
+local M = {}
+
+--- The colorscheme command to run (e.g. "rose-pine", "rose-pine-main", "rose-pine-moon", "rose-pine-dawn")
+M.colorscheme = "rose-pine"
+
+--- Setup function called before the colorscheme command
+M.setup = function()
+  require("rose-pine").setup({
+    variant = "auto",     -- auto, main, moon, or dawn
+    dark_variant = "main",
+    dim_inactive_windows = false,
+    extend_background_behind_borders = true,
+    enable = {
+      terminal = true,
+      legacy_highlights = true,
+      migrations = true,
+    },
+    styles = {
+      bold = true,
+      italic = true,
+      transparency = true,
+    },
+    groups = {
+      border = "muted",
+      link = "iris",
+      panel = "surface",
+      error = "love",
+      hint = "iris",
+      info = "foam",
+      note = "pine",
+      todo = "rose",
+      warn = "gold",
+      git_add = "foam",
+      git_change = "rose",
+      git_delete = "love",
+      git_dirty = "rose",
+      git_ignore = "muted",
+      git_merge = "iris",
+      git_rename = "pine",
+      git_stage = "iris",
+      git_text = "rose",
+      git_untracked = "subtle",
+      h1 = "iris",
+      h2 = "foam",
+      h3 = "rose",
+      h4 = "gold",
+      h5 = "pine",
+      h6 = "foam",
+    },
+    highlight_groups = {
+      StatusLine = { fg = "foam", bg = "NONE" },
+      StatusLineNC = { fg = "muted", bg = "NONE" },
+    },
+  })
+end
+
+--- Lualine theme (nil = use built-in lualine theme for the colorscheme)
+--- Set to a custom table to override, or leave nil to auto-detect
+M.lualine_theme = nil
+--- Lualine theme name (used when lualine_theme is nil; defaults to colorscheme)
+M.lualine_theme_name = "rose-pine"
+
+return M

@@ -1,3 +1,7 @@
+-- Plugin declarations for color schemes.
+-- Theme-specific setup & activation is in lua/themes/
+-- To switch themes, edit lua/themes/init.lua
+
 vim.pack.add({
 	{
 		src = "https://github.com/rose-pine/neovim",
@@ -7,17 +11,19 @@ vim.pack.add({
 		src = "https://github.com/folke/tokyonight.nvim",
 		name = "tokyonight.nvim",
 	},
+	{
+		src = "https://github.com/catppuccin/nvim",
+		name = "catppuccin",
+	},
+	{
+		src = "https://github.com/vague-theme/vague.nvim",
+		name = "vague.nvim",
+	},
+	{
+		src = "https://github.com/thesimonho/kanagawa-paper.nvim",
+		name = "kanagawa-paper.nvim",
+	},
 })
-require("tokyonight").setup({
-    style = "moon",
-    transparent = true,
-    styles = {
-        sidebars = "transparent",
-        floats = "transparent",
-    },
-    on_highlights = function(hl, c)
-        hl.StatusLine = { fg = c.fg_sidebar, bg = "NONE" }
-        hl.StatusLineNC = { fg = c.fg_gutter, bg = "NONE" }
-    end,
-})
-vim.cmd("colorscheme tokyonight-moon")
+
+-- Apply the active theme (colorscheme setup + vim.cmd("colorscheme ..."))
+require("themes")
