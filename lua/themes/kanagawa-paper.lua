@@ -96,6 +96,6 @@ M.lualine_theme = function()
   }
 end
 --- Lualine theme name (used when lualine_theme is nil; defaults to colorscheme)
-M.lualine_theme_name = "kanagawa-paper-ink"
+M.lualine_theme_name = "kanagawa-paper-ink"  -- base name; actual variant depends on vim.o.background
 
 return M
