@@ -1,5 +1,4 @@
 -- ============================================================
--- SECTION 1: FOUNDATION
 -- Core Neovim settings, leaders, options, basic keymaps, basic autocmds
 -- ============================================================
 do
@@ -15,16 +14,10 @@ do
   -- Set to true if you have a Nerd Font installed and selected in the terminal
   vim.g.have_nerd_font = true
 
-  -- [[ Setting options ]]
-  --  See `:help vim.o`
-  -- NOTE: You can change these options as you wish!
-  --  For more options, you can see `:help option-list`
-
   -- Make line numbers default
-  vim.o.number = true
+  -- vim.o.number = true
   -- You can also add relative line numbers, to help with jumping.
-  --  Experiment for yourself to see if you like it!
-  -- vim.o.relativenumber = true
+  vim.o.relativenumber = true
 
   -- Enable mouse mode, can be useful for resizing splits for example!
   vim.o.mouse = 'a'
@@ -50,6 +43,9 @@ do
 
   -- Keep signcolumn on by default
   vim.o.signcolumn = 'yes'
+
+  -- Don't show the command line by default (shows as popup when pressing ':')
+  vim.o.cmdheight = 0
 
   -- Decrease update time
   vim.o.updatetime = 250
@@ -79,7 +75,7 @@ do
   vim.o.cursorline = true
 
   -- Minimal number of screen lines to keep above and below the cursor.
-  vim.o.scrolloff = 10
+  vim.o.scrolloff = 0
 
   -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
   -- instead raise a dialog asking if you wish to save the current file(s)

@@ -36,7 +36,6 @@ vim.api.nvim_create_autocmd("VimEnter", {
         -- Clear theme cache so lualine's built-in OptionSet background
         -- autocmd picks up fresh theme colors on next setup() call
         package.loaded["themes"] = nil
-        vim.notify("OS theme switched to " .. mode, vim.log.levels.INFO)
       end,
     })
   end,
