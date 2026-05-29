@@ -1,13 +1,15 @@
 -- Telescope: fuzzy finder
 
+local gh = require('helpers').gh
+
 ---@type (string|vim.pack.Spec)[]
 local telescope_plugins = {
-  'https://github.com/nvim-lua/plenary.nvim',
-  'https://github.com/nvim-telescope/telescope.nvim',
-  'https://github.com/nvim-telescope/telescope-ui-select.nvim',
+  gh('nvim-lua/plenary.nvim'),
+  gh('nvim-telescope/telescope.nvim'),
+  gh('nvim-telescope/telescope-ui-select.nvim'),
 }
 if vim.fn.executable 'make' == 1 then
-  table.insert(telescope_plugins, 'https://github.com/nvim-telescope/telescope-fzf-native.nvim')
+  table.insert(telescope_plugins, gh('nvim-telescope/telescope-fzf-native.nvim'))
 end
 
 vim.pack.add(telescope_plugins)

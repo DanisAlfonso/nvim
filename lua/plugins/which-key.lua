@@ -1,5 +1,6 @@
 -- which-key: shows pending keybinds in a popup
-vim.pack.add { 'https://github.com/folke/which-key.nvim' }
+local gh = require('helpers').gh
+vim.pack.add { gh('folke/which-key.nvim') }
 local wk = require 'which-key'
 
 wk.setup {

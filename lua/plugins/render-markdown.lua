@@ -1,7 +1,7 @@
 -- render-markdown.nvim: renders headings, code blocks, tables, etc. inline
--- https://github.com/MeanderingProgrammer/render-markdown.nvim
+local gh = require('helpers').gh
 vim.pack.add {
-  'https://github.com/MeanderingProgrammer/render-markdown.nvim',
+  gh('MeanderingProgrammer/render-markdown.nvim'),
 }
 
 require('render-markdown').setup {

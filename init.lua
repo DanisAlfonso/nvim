@@ -6,8 +6,6 @@ do
   vim.loader.enable()
 
   -- Set <space> as the leader key
-  -- See `:help mapleader`
-  --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
   vim.g.mapleader = ' '
   vim.g.maplocalleader = ' '
 
@@ -15,15 +13,27 @@ do
   vim.g.have_nerd_font = true
 
   -- Make line numbers default
-  -- vim.o.number = true
-  -- You can also add relative line numbers, to help with jumping.
-  vim.o.relativenumber = true
+  vim.o.number = true
+  -- Add relative line numbers, to help with jumping.
+  -- vim.o.relativenumber = true
 
   -- Enable mouse mode, can be useful for resizing splits for example!
   vim.o.mouse = 'a'
 
   -- Don't show the mode, since it's already in the status line
   vim.o.showmode = false
+
+  -- Auto-reload files when changed externally (e.g. by other tools like Claude Code, aider, etc.)
+  -- See :help checktime
+  vim.o.autoread = true
+  vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter', 'CursorHold' }, {
+    pattern = '*',
+    callback = function()
+      -- Only check if there are buffers with changes from external sources
+      vim.cmd('checktime')
+    end,
+    desc = 'Auto-reload files changed externally',
+  })
 
   -- Sync clipboard between OS and Neovim.
   --  Schedule the setting after `UiEnter` because it can increase startup-time.
@@ -224,12 +234,6 @@ do
     end,
   })
 end
-
----Because most plugins are hosted on GitHub, you can use the helper
----function to have less repetition in the following sections.
----@param repo string
----@return string
-local function gh(repo) return 'https://github.com/' .. repo end
 
 -- ============================================================
 -- SECTION 3: PLUGINS

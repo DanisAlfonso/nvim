@@ -1,6 +1,8 @@
 -- LSP configuration: servers, mason, fidget
 
-vim.pack.add { 'https://github.com/j-hui/fidget.nvim' }
+local gh = require('helpers').gh
+
+vim.pack.add { gh('j-hui/fidget.nvim') }
 require('fidget').setup {}
 
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -72,10 +74,10 @@ local servers = {
 }
 
 vim.pack.add {
-  'https://github.com/neovim/nvim-lspconfig',
-  'https://github.com/mason-org/mason.nvim',
-  'https://github.com/mason-org/mason-lspconfig.nvim',
-  'https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim',
+  gh('neovim/nvim-lspconfig'),
+  gh('mason-org/mason.nvim'),
+  gh('mason-org/mason-lspconfig.nvim'),
+  gh('WhoIsSethDaniel/mason-tool-installer.nvim'),
 }
 
 require('mason').setup {}

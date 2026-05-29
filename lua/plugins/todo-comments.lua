@@ -1,3 +1,4 @@
 -- Highlight TODO, FIXME, NOTE, etc in comments
-vim.pack.add { 'https://github.com/folke/todo-comments.nvim' }
+local gh = require('helpers').gh
+vim.pack.add { gh('folke/todo-comments.nvim') }
 require('todo-comments').setup { signs = false }

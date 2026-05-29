@@ -1,5 +1,6 @@
 -- snacks.nvim: dashboard and animations
-vim.pack.add { 'https://github.com/folke/snacks.nvim' }
+local gh = require('helpers').gh
+vim.pack.add { gh('folke/snacks.nvim') }
 require('snacks').setup {
   explorer = {
     replace_netrw = true,

@@ -1,5 +1,6 @@
 -- conform.nvim: formatting
-vim.pack.add { 'https://github.com/stevearc/conform.nvim' }
+local gh = require('helpers').gh
+vim.pack.add { gh('stevearc/conform.nvim') }
 require('conform').setup {
   notify_on_error = false,
   format_on_save = function(bufnr)

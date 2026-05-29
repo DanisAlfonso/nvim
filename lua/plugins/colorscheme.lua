@@ -2,29 +2,31 @@
 -- Theme-specific setup & activation is in lua/themes/
 -- To switch themes, edit lua/themes/init.lua
 
+local gh = require('helpers').gh
+
 vim.pack.add({
 	{
-		src = "https://github.com/rose-pine/neovim",
+		src = gh("rose-pine/neovim"),
 		name = "rose-pine",
 	},
 	{
-		src = "https://github.com/folke/tokyonight.nvim",
+		src = gh("folke/tokyonight.nvim"),
 		name = "tokyonight.nvim",
 	},
 	{
-		src = "https://github.com/catppuccin/nvim",
+		src = gh("catppuccin/nvim"),
 		name = "catppuccin",
 	},
 	{
-		src = "https://github.com/vague-theme/vague.nvim",
+		src = gh("vague-theme/vague.nvim"),
 		name = "vague.nvim",
 	},
 	{
-		src = "https://github.com/thesimonho/kanagawa-paper.nvim",
+		src = gh("thesimonho/kanagawa-paper.nvim"),
 		name = "kanagawa-paper.nvim",
 	},
 	{
-		src = "https://github.com/cormacrelf/dark-notify",
+		src = gh("cormacrelf/dark-notify"),
 		name = "dark-notify",
 	},
 })
