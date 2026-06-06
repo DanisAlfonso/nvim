@@ -26,6 +26,8 @@ wk.setup {
   spec = {
     -- Search group
     { '<leader>s', group = 'Search', icon = ' ', mode = { 'n', 'v' } },
+    -- Audio Pronunciación
+    { '<leader>a', group = 'Audio', icon = ' ', mode = { 'n', 'v' } },
     -- Toggle group
     { '<leader>t', group = 'Toggle', icon = ' ' },
     -- UI Toggle group
@@ -35,6 +37,12 @@ wk.setup {
     { '<leader>g', group = 'Git', icon = ' ' },
     -- LSP group
     { 'gr', group = 'LSP Actions', icon = ' ', mode = { 'n' } },
+    -- Justify
+    { '<leader>j', desc = '[J]ustify paragraph', icon = ' ', mode = { 'n', 'v' } },
+    -- Format
+    { '<leader>f', desc = '[F]ormat buffer', icon = ' ', mode = { 'n', 'v' } },
+    -- Toggle cursorline
+    { '<leader>l', desc = 'Toggle [L]ine numbers/cursorline', icon = ' ' },
     -- Dashboard
     { '<leader>d', desc = 'Dashboard', icon = ' ' },
     -- Zen mode

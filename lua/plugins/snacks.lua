@@ -8,7 +8,23 @@ require('snacks').setup {
   dashboard = {
     enabled = true,
     preset = {
-      header = '󰎜  nvim',
+      header = table.concat({
+        '██████╗  █████╗ ███╗   ██╗███╗   ██╗██╗   ██╗',
+        '██╔══██╗██╔══██╗████╗  ██║████╗  ██║╚██╗ ██╔╝',
+        '██║  ██║███████║██╔██╗ ██║██╔██╗ ██║ ╚████╔╝ ',
+        '██║  ██║██╔══██║██║╚██╗██║██║╚██╗██║  ╚██╔╝  ',
+        '██████╔╝██║  ██║██║ ╚████║██║ ╚████║   ██║   ',
+        '╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═══╝   ╚═╝   ',
+      }, '\n'),
+      keys = {
+        { icon = ' ', key = 'f', desc = 'Find File', action = ':lua Snacks.dashboard.pick(\'files\')' },
+        { icon = ' ', key = 'n', desc = 'New File', action = ':ene | startinsert' },
+        { icon = ' ', key = 'g', desc = 'Find Text', action = ':lua Snacks.dashboard.pick(\'live_grep\')' },
+        { icon = ' ', key = 'r', desc = 'Recent Files', action = ':lua Snacks.dashboard.pick(\'oldfiles\')' },
+        { icon = ' ', key = 'c', desc = 'Config', action = ':e $MYVIMRC' },
+        { icon = '󰒲 ', key = 'L', desc = 'Lazy', action = ':Lazy', enabled = package.loaded.lazy ~= nil },
+        { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
+      },
     },
     sections = {
       { section = 'header' },
@@ -119,10 +135,50 @@ vim.keymap.set('n', '<leader>zp', function()
       wo = {
         number = false,
         relativenumber = false,
+        wrap = true,
+        linebreak = true,
+        breakindent = true,
       },
     },
   }
 end, { desc = 'Zen mode [p]rose' })
+
+-- Justify paragraph with custom script (prompt for width)
+vim.keymap.set('n', '<leader>j', function()
+  local win_w = vim.api.nvim_win_get_width(0)
+  local default_width = 75
+  if win_w < 75 then default_width = win_w end
+  vim.ui.input({ prompt = 'Justify width [' .. default_width .. ']: ', default = tostring(default_width) }, function(input)
+    if not input or input == '' then return end
+    local w = tonumber(input)
+    if not w or w < 20 or w > 200 then
+      vim.notify('Invalid width: ' .. input, 'error')
+      return
+    end
+    local old_prg = vim.o.formatprg
+    vim.o.formatprg = 'justify -w' .. w
+    vim.cmd('normal! gqip')
+    vim.o.formatprg = old_prg
+  end)
+end, { desc = '[J]ustify paragraph (prompt width)' })
+
+vim.keymap.set('x', '<leader>j', function()
+  local win_w = vim.api.nvim_win_get_width(0)
+  local default_width = 75
+  if win_w < 75 then default_width = win_w end
+  vim.ui.input({ prompt = 'Justify width [' .. default_width .. ']: ', default = tostring(default_width) }, function(input)
+    if not input or input == '' then return end
+    local w = tonumber(input)
+    if not w or w < 20 or w > 200 then
+      vim.notify('Invalid width: ' .. input, 'error')
+      return
+    end
+    vim.api.nvim_feedkeys(
+      vim.api.nvim_replace_termcodes(":'<,'>!justify -w" .. w .. "<CR>", true, false, true),
+      'n', false
+    )
+  end)
+end, { desc = '[J]ustify selection (prompt width)' })
 
 -- Terminal keymaps
 vim.keymap.set('n', '<leader>tt', function() Snacks.terminal.toggle() end, { desc = '[T]oggle [T]erminal' })
@@ -136,3 +192,11 @@ vim.keymap.set('n', '<leader>ui', function() Snacks.toggle.indent() end, { desc 
 vim.keymap.set('n', '<leader>ut', function() Snacks.toggle.treesitter() end, { desc = 'Toggle [T]reesitter highlighting' })
 vim.keymap.set('n', '<leader>uh', function() Snacks.toggle.inlay_hints() end, { desc = 'Toggle Inlay [H]ints' })
 vim.keymap.set('n', '<leader>uw', function() Snacks.toggle.words() end, { desc = 'Toggle [W]ords highlighting' })
+
+-- Dashboard header highlight
+vim.api.nvim_create_autocmd('ColorScheme', {
+  group = vim.api.nvim_create_augroup('SnacksDashboardHeader', { clear = true }),
+  callback = function()
+    vim.api.nvim_set_hl(0, 'SnacksDashboardHeader', { fg = '#7E9CD8' }) -- violeta kanagawa
+  end,
+})

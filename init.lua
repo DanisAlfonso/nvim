@@ -15,7 +15,7 @@ do
   -- Make line numbers default
   vim.o.number = true
   -- Add relative line numbers, to help with jumping.
-  -- vim.o.relativenumber = true
+  vim.o.relativenumber = true
 
   -- Enable mouse mode, can be useful for resizing splits for example!
   vim.o.mouse = 'a'
@@ -98,6 +98,13 @@ do
   -- Clear highlights on search when pressing <Esc> in normal mode
   --  See `:help hlsearch`
   vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+
+  -- Toggle cursorline with <leader>l
+  vim.keymap.set('n', '<leader>l', function()
+    vim.o.cursorline = not vim.o.cursorline
+    local status = vim.o.cursorline and 'ON' or 'OFF'
+    vim.notify('cursorline ' .. status, vim.o.cursorline and vim.log.levels.INFO or vim.log.levels.WARN)
+  end, { desc = 'Toggle cursorline' })
 
   -- Diagnostic Config & Keymaps
   --  See `:help vim.diagnostic.Opts`

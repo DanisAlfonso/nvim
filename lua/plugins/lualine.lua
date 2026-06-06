@@ -31,6 +31,7 @@ require('lualine').setup {
         },
         lualine_x = {
             { 'diagnostics', sources = { 'nvim_diagnostic' }, symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' } },
+            { function() local ok, bat = pcall(require, 'battery'); if ok then return bat.get_status_line() else return '' end end },
             { 'filetype', icon_only = true },
             { 'datetime', style = '%H:%M', icon = '' },
         },
