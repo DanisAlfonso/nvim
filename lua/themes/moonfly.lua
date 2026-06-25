@@ -33,7 +33,7 @@ M.setup = function()
     callback = function()
       -- Float / popup windows
       vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'NONE' })
-      vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'NONE' })
+      vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'NONE', fg = '#3c3c3c' })
       vim.api.nvim_set_hl(0, 'FloatTitle', { bg = 'NONE' })
 
       -- which-key uses its own highlight groups
@@ -42,7 +42,7 @@ M.setup = function()
       vim.api.nvim_set_hl(0, 'WhichKeyDesc', { bg = 'NONE' })
       vim.api.nvim_set_hl(0, 'WhichKeySeperator', { bg = 'NONE' })
       vim.api.nvim_set_hl(0, 'WhichKeyFloat', { bg = 'NONE' })
-      vim.api.nvim_set_hl(0, 'WhichKeyBorder', { bg = 'NONE' })
+      vim.api.nvim_set_hl(0, 'WhichKeyBorder', { bg = 'NONE', fg = '#3c3c3c' })
 
       -- Popup menu (used by blink.cmp)
       vim.api.nvim_set_hl(0, 'Pmenu', { bg = '#1c1c1c', fg = '#c6c6c6' })
@@ -52,14 +52,14 @@ M.setup = function()
 
       -- Telescope
       vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg = 'NONE' })
-      vim.api.nvim_set_hl(0, 'TelescopeBorder', { bg = 'NONE' })
+      vim.api.nvim_set_hl(0, 'TelescopeBorder', { bg = 'NONE', fg = '#3c3c3c' })
       vim.api.nvim_set_hl(0, 'TelescopeTitle', { bg = 'NONE' })
       vim.api.nvim_set_hl(0, 'TelescopePromptNormal', { bg = 'NONE' })
-      vim.api.nvim_set_hl(0, 'TelescopePromptBorder', { bg = 'NONE' })
+      vim.api.nvim_set_hl(0, 'TelescopePromptBorder', { bg = 'NONE', fg = '#3c3c3c' })
       vim.api.nvim_set_hl(0, 'TelescopeResultsNormal', { bg = 'NONE' })
-      vim.api.nvim_set_hl(0, 'TelescopeResultsBorder', { bg = 'NONE' })
+      vim.api.nvim_set_hl(0, 'TelescopeResultsBorder', { bg = 'NONE', fg = '#3c3c3c' })
       vim.api.nvim_set_hl(0, 'TelescopePreviewNormal', { bg = 'NONE' })
-      vim.api.nvim_set_hl(0, 'TelescopePreviewBorder', { bg = 'NONE' })
+      vim.api.nvim_set_hl(0, 'TelescopePreviewBorder', { bg = 'NONE', fg = '#3c3c3c' })
       vim.api.nvim_set_hl(0, 'TelescopePromptTitle', { bg = 'NONE' })
       vim.api.nvim_set_hl(0, 'TelescopeResultsTitle', { bg = 'NONE' })
       vim.api.nvim_set_hl(0, 'TelescopePreviewTitle', { bg = 'NONE' })
@@ -67,7 +67,7 @@ M.setup = function()
       -- snacks.nvim
       vim.api.nvim_set_hl(0, 'SnacksNormal', { bg = 'NONE' })
       vim.api.nvim_set_hl(0, 'SnacksFloat', { bg = 'NONE' })
-      vim.api.nvim_set_hl(0, 'SnacksBorder', { bg = 'NONE' })
+      vim.api.nvim_set_hl(0, 'SnacksBorder', { bg = 'NONE', fg = '#3c3c3c' })
 
       -- nvim-tree / neo-tree explorers
       vim.api.nvim_set_hl(0, 'NvimTreeNormal', { bg = 'NONE' })
@@ -86,7 +86,7 @@ M.setup = function()
       vim.api.nvim_set_hl(0, 'NotifyBackground', { bg = 'NONE' })
 
       -- dap-ui
-      vim.api.nvim_set_hl(0, 'DapUIFloatBorder', { bg = 'NONE' })
+      vim.api.nvim_set_hl(0, 'DapUIFloatBorder', { bg = 'NONE', fg = '#3c3c3c' })
       vim.api.nvim_set_hl(0, 'DapUIWindow', { bg = 'NONE' })
     end,
   })
