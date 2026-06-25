@@ -28,8 +28,10 @@ wk.setup {
     { '<leader>s', group = 'Search', icon = ' ', mode = { 'n', 'v' } },
     -- Audio Pronunciación
     { '<leader>a', group = 'Audio', icon = ' ', mode = { 'n', 'v' } },
-    -- Toggle group
-    { '<leader>t', group = 'Toggle', icon = ' ' },
+    -- Terminal group
+    { '<leader>t', group = 'Terminal + Translate', icon = ' ' },
+    { '<leader>tt', desc = 'Terminal (current window)', icon = ' ' },
+    { '<leader>tf', desc = 'Terminal (float)', icon = ' ' },
     -- UI Toggle group
     { '<leader>u', group = 'UI Toggle', icon = ' ' },
     -- Git group (both h for hunk and g for general git)

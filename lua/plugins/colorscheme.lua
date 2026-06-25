@@ -26,6 +26,26 @@ vim.pack.add({
 		name = "kanagawa-paper.nvim",
 	},
 	{
+		src = gh("EdenEast/nightfox.nvim"),
+		name = "nightfox.nvim",
+	},
+	{
+		src = gh("scottmckendry/cyberdream.nvim"),
+		name = "cyberdream.nvim",
+	},
+	{
+		src = gh("AlexvZyl/nordic.nvim"),
+		name = "nordic.nvim",
+	},
+	{
+		src = gh("olimorris/onedarkpro.nvim"),
+		name = "onedarkpro.nvim",
+	},
+	{
+		src = gh("bluz71/vim-moonfly-colors"),
+		name = "moonfly",
+	},
+	{
 		src = gh("cormacrelf/dark-notify"),
 		name = "dark-notify",
 	},

@@ -8,14 +8,7 @@ require('snacks').setup {
   dashboard = {
     enabled = true,
     preset = {
-      header = table.concat({
-        '██████╗  █████╗ ███╗   ██╗███╗   ██╗██╗   ██╗',
-        '██╔══██╗██╔══██╗████╗  ██║████╗  ██║╚██╗ ██╔╝',
-        '██║  ██║███████║██╔██╗ ██║██╔██╗ ██║ ╚████╔╝ ',
-        '██║  ██║██╔══██║██║╚██╗██║██║╚██╗██║  ╚██╔╝  ',
-        '██████╔╝██║  ██║██║ ╚████║██║ ╚████║   ██║   ',
-        '╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═══╝   ╚═╝   ',
-      }, '\n'),
+      header = '  NVIM',
       keys = {
         { icon = ' ', key = 'f', desc = 'Find File', action = ':lua Snacks.dashboard.pick(\'files\')' },
         { icon = ' ', key = 'n', desc = 'New File', action = ':ene | startinsert' },
@@ -181,9 +174,9 @@ vim.keymap.set('x', '<leader>j', function()
 end, { desc = '[J]ustify selection (prompt width)' })
 
 -- Terminal keymaps
-vim.keymap.set('n', '<leader>tt', function() Snacks.terminal.toggle() end, { desc = '[T]oggle [T]erminal' })
+vim.keymap.set('n', '<leader>tt', function() Snacks.terminal.toggle(nil, { win = { position = 'current' } }) end, { desc = '[T]erminal like :terminal (current window)' })
 vim.keymap.set('n', '<leader>tf', function() Snacks.terminal.toggle(nil, { win = { style = 'terminal_float' } }) end, { desc = '[T]erminal [F]loat' })
-vim.keymap.set('n', '<leader>tl', function() Snacks.terminal.toggle('lazygit') end, { desc = '[T]erminal [L]azygit' })
+
 
 -- Toggle keymaps
 vim.keymap.set('n', '<leader>ud', function() Snacks.toggle.diagnostics() end, { desc = 'Toggle [D]iagnostics' })
@@ -193,10 +186,15 @@ vim.keymap.set('n', '<leader>ut', function() Snacks.toggle.treesitter() end, { d
 vim.keymap.set('n', '<leader>uh', function() Snacks.toggle.inlay_hints() end, { desc = 'Toggle Inlay [H]ints' })
 vim.keymap.set('n', '<leader>uw', function() Snacks.toggle.words() end, { desc = 'Toggle [W]ords highlighting' })
 
--- Dashboard header highlight
+-- Dashboard header highlight — uses theme's Special or Statement color
 vim.api.nvim_create_autocmd('ColorScheme', {
   group = vim.api.nvim_create_augroup('SnacksDashboardHeader', { clear = true }),
   callback = function()
-    vim.api.nvim_set_hl(0, 'SnacksDashboardHeader', { fg = '#7E9CD8' }) -- violeta kanagawa
+    local ok, hl = pcall(vim.api.nvim_get_hl, 0, { name = 'Special', link = false })
+    if ok and hl and hl.fg then
+      vim.api.nvim_set_hl(0, 'SnacksDashboardHeader', { fg = hl.fg })
+    else
+      vim.api.nvim_set_hl(0, 'SnacksDashboardHeader', { fg = '#bdbdbd' })
+    end
   end,
 })

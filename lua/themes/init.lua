@@ -1,4 +1,4 @@
-local ACTIVE_THEME = "kanagawa-paper"
+local ACTIVE_THEME = "moonfly"
 
 local theme = require("themes." .. ACTIVE_THEME)
 theme.setup()

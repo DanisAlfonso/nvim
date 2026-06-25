@@ -23,6 +23,8 @@ do
   -- Don't show the mode, since it's already in the status line
   vim.o.showmode = false
 
+
+
   -- Auto-reload files when changed externally (e.g. by other tools like Claude Code, aider, etc.)
   -- See :help checktime
   vim.o.autoread = true
